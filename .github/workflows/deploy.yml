@@ -1,0 +1,25 @@
+name: Build & Run OMS + FIX
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: [self-hosted, oms]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: ./gradlew clean build
+
+      - name: Run OMS
+        run: |
+          pkill -f oms-service || true
+          nohup ./gradlew :oms-service:bootRun &
+
+      - name: Run FIX Gateway
+        run: |
+          pkill -f fix-gateway || true
+          nohup ./gradlew :fix-gateway:bootRun &

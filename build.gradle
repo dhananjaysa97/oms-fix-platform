@@ -1,0 +1,2 @@
+allprojects{ group="com.example.oms"; version="0.1.0" }
+subprojects{ repositories{ mavenCentral() } }

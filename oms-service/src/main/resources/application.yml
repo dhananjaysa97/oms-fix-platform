@@ -1,0 +1,10 @@
+server:
+  port: ${PORT:8082}
+spring:
+  application:
+    name: oms-service
+oms:
+  kafka:
+    bootstrapServers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    commandsTopic: ${OMS_COMMANDS_TOPIC:oms.commands}
+    eventsTopic: ${OMS_EVENTS_TOPIC:oms.events}

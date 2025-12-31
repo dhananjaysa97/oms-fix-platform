@@ -1,0 +1,30 @@
+syntax = "proto3";
+package oms;
+option java_package = "com.example.oms.proto";
+option java_multiple_files = true;
+
+enum Side { SIDE_UNSPECIFIED=0; BUY=1; SELL=2; }
+enum OrdType { ORD_TYPE_UNSPECIFIED=0; MARKET=1; LIMIT=2; }
+enum OrderStatus { OS_UNSPECIFIED=0; NEW=1; ACKED=2; PARTIALLY_FILLED=3; FILLED=4; CANCELED=5; REJECTED=6; }
+
+message Order {
+  string order_id = 1;
+  string symbol = 2;
+  Side side = 3;
+  OrdType ord_type = 4;
+  double limit_price = 5;
+  int64 qty = 6;
+  int64 ts_epoch_ms = 7;
+}
+
+enum EventType { EVT_UNSPECIFIED=0; ACK=1; TRADE=2; CANCEL=3; REJECT=4; }
+
+message OrderEvent {
+  EventType type = 1;
+  Order order = 2;
+  OrderStatus status = 3;
+  int64 filled_qty = 4;
+  double last_px = 5;
+  string text = 6;
+  int64 ts_epoch_ms = 7;
+}

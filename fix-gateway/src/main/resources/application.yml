@@ -1,0 +1,9 @@
+server:
+  port: ${PORT:8083}
+spring:
+  application:
+    name: fix-gateway
+oms:
+  kafka:
+    bootstrapServers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    commandsTopic: ${OMS_COMMANDS_TOPIC:oms.commands}

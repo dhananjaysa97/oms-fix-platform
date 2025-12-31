@@ -1,0 +1,2 @@
+rootProject.name="oms-fix-platform"
+include("oms-proto","oms-common","oms-service","fix-gateway")
